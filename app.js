@@ -1,4 +1,4 @@
-const port = 80;
+const port = process.env.PORT || 8080;
 
 const express = require("express");
 const helmet = require("helmet");
