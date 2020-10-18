@@ -105,3 +105,4 @@ const timeInImage = function(app) {
 }
 
 module.exports = timeInImage;
+

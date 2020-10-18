@@ -1,4 +1,4 @@
-const Jimp = require("jimp");
+const jimp = require("jimp");
 
 const getImageBuffer = (rgb, row, column, width, height) => {
     return new Promise((resolve, reject) => {
@@ -9,14 +9,15 @@ const getImageBuffer = (rgb, row, column, width, height) => {
             imageData.push([rgb[r][c]]);
         }
 
-        new Jimp({
+        new jimp({
             width: width,
             height: height,
             data: Buffer.from(imageData)
         }, (err, image) => {
-                resolve(image.getBufferAsync(Jimp.MIME_JPEG));
+                resolve(image.getBufferAsync(jimp.MIME_JPEG));
         })
     });
 }
 
 module.exports = getImageBuffer;
+

@@ -134,3 +134,4 @@ module.exports = {
     generateCurrentMoonAgeImageBuffer: generateCurrentMoonAgeImageBuffer,
     generateCurrentTimeSkyboxImageBuffer: generateCurrentTimeSkyboxImageBuffer,
 }
+
