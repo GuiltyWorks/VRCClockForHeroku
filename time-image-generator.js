@@ -63,7 +63,7 @@ const timeImageGenerator = function(app) {
 
     app.get("/:type", (req, res) => {
         this.onRequest(req);
-        res.header({"Content-Type" : "image/jpg"});
+        res.header({"Content-Type": "image/jpg"});
 
         let ip = "0.0.0.0"
         if (req.headers['x-forwarded-for']) {
@@ -76,8 +76,7 @@ const timeImageGenerator = function(app) {
             ip = req.socket.remoteAddress;
         }
         ip = (ip + ".").match(/(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){4}/)[0].slice(0, -1);
-        console.log("IP Address : " + ip);
-        ip = "157.107.91.149";
+        console.log("IP Address: " + ip);
 
         if (cachedTzs[ip]) {
             getBuffer(cachedLats[ip], cachedLons[ip], cachedTzs[ip], req.params.type).then(buffer => {
