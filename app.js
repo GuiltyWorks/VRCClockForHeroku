@@ -1,18 +1,17 @@
-const port = process.env.PORT || 8080;
+const port = 8080 // process.env.PORT || 8080;
 
 const express = require("express");
 const helmet = require("helmet");
-const timeInImage = require(__dirname + "/time-in-image");
+const timeImageGenerator = require(__dirname + "/time-image-generator");
 
 var app = express();
 app.use(helmet());
 
-var process = new timeInImage(app);
-process.onRequest = req => {
+var generator = new timeImageGenerator(app);
+generator.onRequest = req => {
     console.log("--------Requested--------");
 }
 
 app.listen(port, () => {
     console.log("Web Server Opened At - PublicIP:" + port + "/:type\n");
 });
-

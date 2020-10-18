@@ -14,18 +14,18 @@ const generateCurrentTimeImageBuffer = (time) => {  // 12.0, 60.0, 60.0
         }
         let minuteBitArray = [];
         for (let i = 0; i < 6; i++) {
-            minuteBitArray[i] = parseInt(binaryTime[0].charAt(i)) * 255;
+            minuteBitArray[i] = parseInt(binaryTime[1].charAt(i)) * 255;
         }
         let secondBitArray = [];
         for (let i = 0; i < 6; i++) {
-            secondBitArray[i] = parseInt(binaryTime[0].charAt(i)) * 255;
+            secondBitArray[i] = parseInt(binaryTime[2].charAt(i)) * 255;
         }
         ampm = parseInt(binaryTime[3].charAt(0)) * 255;
 
-        getImageBuffer.getImageBuffer([
+        getImageBuffer([
             [[hourBitArray[0], hourBitArray[1], hourBitArray[2]], [hourBitArray[3], 0, ampm]],
             [[minuteBitArray[0], minuteBitArray[1], minuteBitArray[2]], [minuteBitArray[3], minuteBitArray[4], minuteBitArray[5]]],
-            [[secondBitArray[0], secondBitArray[1], secondBitArray[2]], [secondBitArray[3], secondBitArray[4], minuteBitArray[5]]],
+            [[secondBitArray[0], secondBitArray[1], secondBitArray[2]], [secondBitArray[3], secondBitArray[4], secondBitArray[5]]],
         ], 3, 2, 6, 6).then(buffer => {
             resolve(buffer);
         });
@@ -40,7 +40,7 @@ const generateCurrentMoonAgeImageBuffer = (moonAge) => {
             moonBitArray[i] = parseInt(binaryMoonAge.charAt(i)) * 255;
         }
 
-        getImageBuffer.getImageBuffer([
+        getImageBuffer([
             [[moonBitArray[0], moonBitArray[1], moonBitArray[2]]],
             [[moonBitArray[3], moonBitArray[4], moonBitArray[4]]],
             [[moonBitArray[5], moonBitArray[6], moonBitArray[7]]],
@@ -50,7 +50,7 @@ const generateCurrentMoonAgeImageBuffer = (moonAge) => {
     });
 };
 
-const generateCurrentTimeSkyboxImageBuffer = (moonAge, sunSign, sunAltitude, sunAzimuth, moonSign, moonAltitude, moonAzimuth, time) => {  // 9 10 12 10 12 4+1 6 6 = 70
+const generateCurrentSkyboxImageBuffer = (moonAge, sunSign, sunAltitude, sunAzimuth, moonSign, moonAltitude, moonAzimuth, time) => {  // 9 10 12 10 12 4+1 6 6 = 70
     return new Promise((resolve, reject) => {
         let binaryMoonAge = ("000000000" + moonAge.toString(2)).slice(-9);
         let moonAgeBitArray = [];
@@ -97,7 +97,7 @@ const generateCurrentTimeSkyboxImageBuffer = (moonAge, sunSign, sunAltitude, sun
         }
         ampm = parseInt(binaryTime[3].charAt(0)) * 255;
 
-        getImageBuffer.getImageBuffer([
+        getImageBuffer([
             [[moonAgeBitArray[0], moonAgeBitArray[1], moonAgeBitArray[2]],
             [moonAgeBitArray[3], moonAgeBitArray[4], moonAgeBitArray[5]],
             [moonAgeBitArray[6], moonAgeBitArray[7], moonAgeBitArray[8]],
@@ -132,6 +132,5 @@ const generateCurrentTimeSkyboxImageBuffer = (moonAge, sunSign, sunAltitude, sun
 module.exports = {
     generateCurrentTimeImageBuffer: generateCurrentTimeImageBuffer,
     generateCurrentMoonAgeImageBuffer: generateCurrentMoonAgeImageBuffer,
-    generateCurrentTimeSkyboxImageBuffer: generateCurrentTimeSkyboxImageBuffer,
+    generateCurrentSkyboxImageBuffer: generateCurrentSkyboxImageBuffer,
 }
-
