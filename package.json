@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GuiltyWorks/VRCClock.git"
+    "url": "git+https://github.com/GuiltyWorks/VRCClockForHeroku.git"
   },
   "keywords": [
     "vrcclock"
@@ -16,9 +16,9 @@
   "author": "Guilty",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GuiltyWorks/VRCClock/issues"
+    "url": "https://github.com/GuiltyWorks/VRCClockForHeroku/issues"
   },
-  "homepage": "https://github.com/GuiltyWorks/VRCClock#readme",
+  "homepage": "https://github.com/GuiltyWorks/VRCClockForHeroku#readme",
   "dependencies": {
     "express": "^4.17.1",
     "helmet": "^3.21.3",

@@ -2,12 +2,12 @@ const port = process.env.PORT || 8080;
 
 const express = require("express");
 const helmet = require("helmet");
-const TimeInImage = require(__dirname + "/TimeInImage");
+const timeInImage = require(__dirname + "/time-in-image");
 
 var app = express();
 app.use(helmet());
 
-var timeInImage = new TimeInImage(app);
+var timeInImage = new timeInImage(app);
 timeInImage.onRequest = req => {
     console.log("--------Requested--------");
 }
@@ -15,4 +15,3 @@ timeInImage.onRequest = req => {
 app.listen(port, () => {
     console.log("Web Server Opened At - PublicIP:" + port + "/:type\n");
 });
-
